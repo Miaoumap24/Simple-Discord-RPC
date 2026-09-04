@@ -6,22 +6,11 @@ Customize your Discord activity status in real time with a clean Dark Mode GUI. 
 
 ---
 
-## 🌟 Features
-
-- 🎨 **Modern Dark Mode GUI**: Sleek interface built with `CustomTkinter`.
-- 💾 **Auto-Save & Load Settings**: Automatically saves all your inputs to `rpc_config.json` upon closing or running.
-- ⏱️ **Elapsed Time Counter**: Option to display time passed since the activity started.
-- 🖼️ **Asset Support**: Easily configure large and small images along with hover tooltips.
-- 🔗 **Custom Buttons**: Add up to 2 interactive buttons linking to your website, GitHub, Twitch, etc.
-- ⚡ **Multi-Threaded**: Smooth UI experience without freezing during Discord API updates.
-
----
-
-## 📸 Preview & Configuration Fields
+## Preview & Configuration Fields
 
 | Setting | Description | Example |
 | :--- | :--- | :--- |
-| **Application ID** | Your Discord Developer Application Client ID | `1406228219123994735` |
+| **Application ID** | Your Discord Developer Application Client ID | `140000000000000000` |
 | **Details (Line 1)** | First line of your Rich Presence status | `Adding visual interface` |
 | **State (Line 2)** | Second line of your Rich Presence status | `Release date : unknown` |
 | **Large Image Key** | Asset key for the main image set in Developer Portal | `logo` |
@@ -32,7 +21,7 @@ Customize your Discord activity status in real time with a clean Dark Mode GUI. 
 
 ---
 
-## 🚀 Getting Started
+## Getting Started
 
 ### Prerequisites
 
@@ -44,7 +33,7 @@ Customize your Discord activity status in real time with a clean Dark Mode GUI. 
 
 1. **Clone or Download** this repository:
    ```bash
-   git clone https://github.com/your-username/Simple-Discord-RPC.git
+   git clone https://github.com/Miaoumap24/Simple-Discord-RPC.git
    cd Simple-Discord-RPC
    ```
 
@@ -62,7 +51,7 @@ Customize your Discord activity status in real time with a clean Dark Mode GUI. 
 
 ---
 
-## ⚙️ How to Set Up Your Discord Application ID
+## How to Set Up Your Discord Application ID
 
 1. Go to the [Discord Developer Portal](https://discord.com/developers/applications).
 2. Click **New Application**, enter a name, and create it.
@@ -74,24 +63,24 @@ Customize your Discord activity status in real time with a clean Dark Mode GUI. 
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```text
-├── app.py              # Main Python script with CustomTkinter GUI & pypresence logic
-├── rpc_config.json     # Auto-generated configuration file (saves settings)
+├── app.py              # Main Python script
+├── config.json         # Configuration file
 ├── requirements.txt    # Required Python libraries
 └── README.md           # Project documentation
 ```
 
 ---
 
-## 🛠️ Built With
+## Built With
 
 - [CustomTkinter](https://github.com/TomSchimansky/CustomTkinter) - Modern UI library built on top of Tkinter.
 - [pypresence](https://github.com/qwertyquerty/pypresence) - Discord RPC wrapper for Python.
 
 ---
 
-## 📄 License
+## License
 
-This project is open source and available under the [MIT License](LICENSE).
+This project is open source and available under the [AGPL-3.0 License](LICENSE).
