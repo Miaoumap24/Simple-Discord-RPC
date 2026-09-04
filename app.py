@@ -50,7 +50,7 @@ class DiscordRPCApp(ctk.CTk):
                     config.update(data)
                     return config
             except Exception as e:
-                print(f"Erreur de lecture de la config : {e}")
+                print(f"Config read error : {e}")
         return DEFAULT_CONFIG.copy()
 
     def save_config(self):
@@ -71,9 +71,9 @@ class DiscordRPCApp(ctk.CTk):
         try:
             with open(CONFIG_FILE, "w", encoding="utf-8") as f:
                 json.dump(data, f, indent=4, ensure_ascii=False)
-            print("Configuration sauvegardée avec succès.")
+            print("Configuration saved.")
         except Exception as e:
-            print(f"Erreur lors de la sauvegarde : {e}")
+            print(f"Save error : {e}")
 
     def create_widgets(self):
         scroll = ctk.CTkScrollableFrame(self)
@@ -82,7 +82,7 @@ class DiscordRPCApp(ctk.CTk):
         self.entries = {}
 
         fields = [
-            ("client_id", "ID Application Discord :"),
+            ("client_id", "Discord Application ID :"),
             ("details", "Détails (Ligne 1) :"),
             ("state", "État (Ligne 2) :"),
             ("large_image", "Clé Grande Image (Large Image) :"),
@@ -114,10 +114,10 @@ class DiscordRPCApp(ctk.CTk):
         self.status_label = ctk.CTkLabel(scroll, text="Statut : Inactif", text_color="gray")
         self.status_label.pack(pady=5)
 
-        self.start_btn = ctk.CTkButton(scroll, text="Stop Rich Presence", command=self.start_rpc, fg_color="green", hover_color="darkgreen")
+        self.start_btn = ctk.CTkButton(scroll, text="Start Rich Presence", command=self.start_rpc, fg_color="green", hover_color="darkgreen")
         self.start_btn.pack(fill="x", padx=5, pady=5)
 
-        self.stop_btn = ctk.CTkButton(scroll, text="Start Rich Presence", command=self.stop_rpc, fg_color="red", hover_color="darkred", state="disabled")
+        self.stop_btn = ctk.CTkButton(scroll, text="Stop Rich Presence", command=self.stop_rpc, fg_color="red", hover_color="darkred", state="disabled")
         self.stop_btn.pack(fill="x", padx=5, pady=5)
 
     def start_rpc(self):
@@ -125,7 +125,7 @@ class DiscordRPCApp(ctk.CTk):
         client_id = self.entries["client_id"].get().strip()
 
         if not client_id:
-            self.status_label.configure(text="Erreur : ID Client manquant", text_color="red")
+            self.status_label.configure(text="Error : Client ID missing", text_color="red")
             return
 
         try:
@@ -136,11 +136,11 @@ class DiscordRPCApp(ctk.CTk):
 
             self.start_btn.configure(state="disabled")
             self.stop_btn.configure(state="normal")
-            self.status_label.configure(text="Statut : Connecté à Discord", text_color="green")
+            self.status_label.configure(text="Status : Connected to Discord", text_color="green")
 
             threading.Thread(target=self.update_loop, daemon=True).start()
         except Exception as e:
-            self.status_label.configure(text=f"Erreur de connexion : {e}", text_color="red")
+            self.status_label.configure(text=f"Connexion error : {e}", text_color="red")
 
     def update_loop(self):
         while self.is_running:
@@ -184,7 +184,7 @@ class DiscordRPCApp(ctk.CTk):
 
                 self.rpc.update(**payload)
             except Exception as e:
-                print(f"Erreur mise à jour RPC : {e}")
+                print(f"RPC Update error : {e}")
 
             time.sleep(15)
 
@@ -199,7 +199,7 @@ class DiscordRPCApp(ctk.CTk):
 
         self.start_btn.configure(state="normal")
         self.stop_btn.configure(state="disabled")
-        self.status_label.configure(text="Statut : Inactif", text_color="gray")
+        self.status_label.configure(text="Status : Inactive", text_color="gray")
 
     def on_closing(self):
         self.save_config()
